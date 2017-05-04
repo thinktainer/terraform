@@ -191,7 +191,7 @@ func (c *InitCommand) getProviders(path string) error {
 	requirements := terraform.ModuleTreeDependencies(mod, nil).AllPluginRequirements()
 	missing := c.missingProviders(requirements)
 
-	return plugingetter.GetProviders(".", missing)
+	return plugingetter.GetProviders(c.pluginDir(), missing)
 }
 
 func (c *InitCommand) copySource(dst, src, pwd string) error {
